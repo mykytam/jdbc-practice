@@ -1,5 +1,3 @@
-package BLOB;
-
 import javax.imageio.ImageIO;
 import javax.xml.parsers.ParserConfigurationException;
 import java.awt.image.BufferedImage;
@@ -8,7 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.*;
 
-public class Main {
+public class BlOBExample {
     public static void main(String[] args) throws ClassNotFoundException, ParserConfigurationException, IOException {
         String username = "root";
         String password = "database123";

@@ -2,7 +2,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.sql.*;
 
-public class Main {
+public class Test {
     public static void main(String[] args) throws ClassNotFoundException, ParserConfigurationException, IOException {
         // Классы Connection, Statement, ResultSet главные в JDBC
         String username = "root";
