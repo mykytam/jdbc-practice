@@ -12,22 +12,20 @@ public class Main {
         try (Connection connection = DriverManager.getConnection(connectionUrl, username, password)) {
             Statement statement = connection.createStatement();
             // executeQuery - если select, executeUpdate - inset, update, delete
-            statement.executeUpdate("drop table Books");
-            statement.executeUpdate("create table Books (id MEDIUMINT NOT NULL AUTO_INCREMENT, name VARCHAR(30) NOT NULL, PRIMARY KEY (id))");
-            statement.executeUpdate("insert into Books set name = 'The Count of Monte Cristo'");
-            statement.executeUpdate("insert into Books set name = 'Live And Let Die'");
+            statement.executeUpdate("drop table Users");
+            statement.executeUpdate("create table if not exists  Users (id MEDIUMINT NOT NULL AUTO_INCREMENT, name CHAR(30) NOT NULL, password CHAR(30) NOT NULL,PRIMARY KEY (id))");
+            statement.executeUpdate("insert into Users (name, password) values ('ivan', '123')");
+            statement.executeUpdate("insert into Users (name, password) values ('misha', '321')");
 
-            ResultSet resultSet = statement.executeQuery("select * from Books");
+
+            String userId = "1";
+
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from Users where id = ?");
+            preparedStatement.setString(1, userId ); // 1 это номер знака ?
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt("id"));
-                System.out.println(resultSet.getString("name"));
-            }
-
-            System.out.println("__________________________");
-
-            ResultSet resultSet2 = statement.executeQuery("select * from Books where id = 1");
-            while (resultSet2.next()) {
-                System.out.println(resultSet2.getString("name"));
+                System.out.println("userName : " + resultSet.getString("name"));
+                System.out.println("userPassword : " + resultSet.getString("password"));
             }
 
         } catch (SQLException e) {
