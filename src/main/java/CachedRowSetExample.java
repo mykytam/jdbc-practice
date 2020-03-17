@@ -13,8 +13,8 @@ public class CachedRowSetExample {
     public static void main(String[] args) throws ClassNotFoundException, ParserConfigurationException, IOException, SQLException {
         ResultSet resultSet = getData();
         while (resultSet.next()) {
-            System.out.println(resultSet.getInt("id") + " : "+ resultSet.getString("name"));
-        
+            System.out.println(resultSet.getInt("id") + " : " + resultSet.getString("name"));
+        }
         // можно залезть в БД с помощью CachedRowSet
         /*
         CachedRowSet cachedRowSet = (CachedRowSet) resultSet;
